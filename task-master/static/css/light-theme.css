@@ -1,0 +1,72 @@
+/* ライトテーマのスタイル */
+
+/* ボディのスタイル */
+body {
+    background-color: #f9f9f9; /* 明るい背景 */
+    color: #333333; /* ダークな文字 */
+}
+
+.reset-button:hover {
+    background-color: #4c4c4c;
+}
+
+select{
+    background-color: #ffffff; /* 明るい背景 */
+    color: #333333; /* 暗い文字 */
+    border: 1px solid #cccccc; /* 枠線 */
+}
+
+option {
+    background-color: #ffffff; /* 明るい背景 */
+    color: #333333; /* 暗い文字 */
+}
+
+    
+/* テーブルのスタイル*/
+table {
+    background-color: #ffffff; /* 明るい背景 */
+    border: 1px solid #cccccc; /* 薄い枠線 */
+}
+
+th, td {
+    border: 1px solid #cccccc;
+}
+
+td {
+    background-color: #f2f2f2;
+    color: #333333;
+}
+
+tr:nth-child(even) td {
+    background-color: #ffffff; /* 偶数行をさらに明るく */
+}
+
+/* ボタン */
+button, .inline-form button {
+    background-color: #dcdcdc; /* 明るい灰色 */
+    color: #333333;
+}
+.submit-button{
+    color: #333333;
+}
+
+/*フォーム*/
+.task-form, .form-group input {
+    background-color: #ffffff; /* 明るい背景 */
+    border: 1px solid #cccccc;
+    color: #333333;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #1c1c1c;
+}
+
+/* 入力フィールド */
+input[type="text"], input[type="number"], input[type="date"] {
+    background-color: #5a5656;
+    color: #e0e0e0;
+}
+
+.modal {
+    background-color: rgba(255, 255, 255, 0.9); /* 明るい半透明背景 */
+}

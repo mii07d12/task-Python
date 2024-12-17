@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タスク管理</title>
+    <!-- CSSファイルのリンク -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dark-theme.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>タスク管理</h1>
+    
+    <!-- 色選択フォーム -->
+    <div class="color-picker-container">
+        <label for="colorPicker">差し色を選択:</label>
+        <input type="color" id="colorPicker" value="#ADD8E6">
+    </div>
+    
+    <!-- 差色リセットボタン -->
+    <button id="resetColorButton" class="reset-button">デフォルト色に戻す</button>
+    
+    <!-- テーマ切り替え用のラジオボタン -->
+    <div>
+        <input type="radio" id="dark-theme" name="theme" value="dark" checked>
+        <label for="dark-theme">Dark Theme</label>
+    
+        <input type="radio" id="light-theme" name="theme" value="light">
+        <label for="light-theme">Light Theme</label>
+    </div>
+    
+    <!-- CSS を切り替えるためのリンク -->
+    <link id="theme-link" rel="stylesheet" href="/static/css/dark-theme.css">
+
+
+    <!-- 並び替えフォーム -->
+    <form method="get" action="/">
+        <select name="sort_by">
+            <option value="date_desc" {% if sort_by == 'date_desc' %}selected{% endif %}>期限日降順</option>
+            <option value="date_asc" {% if sort_by == 'date_asc' %}selected{% endif %}>期限日昇順</option>
+            <option value="priority_desc" {% if sort_by == 'priority_desc' %}selected{% endif %}>優先度降順</option>
+            <option value="priority_asc" {% if sort_by == 'priority_asc' %}selected{% endif %}>優先度昇順</option>
+        </select>
+        <button type="submit">並び替え</button>
+    </form>
+
+    <!-- タスク一覧 -->
+    <table>
+        <thead>
+            <tr>
+
+                <th>タイトル</th>
+                <th>説明</th>
+                <th>優先度</th>
+                <th>完了</th>
+                <th>期限日</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+
+                <td>{{ task[1] }}</td>
+                <td>
+                    <!-- モーダルを開くボタン -->
+                    <button class="show-description" data-description="{{ task[2] }}">詳細</button>
+                </td>
+                <td>{{ task[3] }}</td>
+                <td>{{ '完了' if task[4] else '未完了' }}</td>
+                <td>{{ task[5] }}</td>
+                <td class="action-buttons">
+                    <form method="post" action="{{ url_for('update', task_id=task[0]) }}" class="inline-form">
+                        <input type="checkbox" name="completed" {% if task[4] %}checked{% endif %}>
+                        <button type="submit">更新</button>
+                    </form>
+                    <form method="post" action="{{ url_for('delete', task_id=task[0]) }}" class="inline-form">
+                        <button type="submit">削除</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- タスク追加フォーム -->
+    <div class="form-container">
+    <h2>タスクの追加</h2>
+    <form method="post" action="{{ url_for('add') }}" class="task-form">
+        <div class="form-group">
+            <label for="title">タイトル:</label>
+            <input type="text" name="title" id="title" required>
+        </div>
+        <div class="form-group">
+            <label for="description">説明:</label>
+            <input type="text" name="description" id="description">
+        </div>
+        <div class="form-group">
+            <label for="priority">優先度 (1～5):</label>
+            <input type="number" name="priority" id="priority" min="1" max="5" required>
+        </div>
+        <div class="form-group">
+            <label for="due_date">期限日 (YYYY-MM-DD):</label>
+            <input type="date" name="due_date" id="due_date" required>
+        </div>
+        <button type="submit" class="submit-button">追加</button>
+    </form>
+</div>
+
+
+
+    <!-- モーダルのマークアップ -->
+    <div id="descriptionModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="descriptionText">説明がここに表示されます。</p>
+        </div>
+    </div>
+
+
+    <!-- JavaScriptファイルのリンク -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

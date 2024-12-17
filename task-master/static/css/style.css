@@ -1,0 +1,232 @@
+:root {
+    --accent-color: #ADD8E6; /* デフォルトの差し色 */
+}
+
+/* 全体のスタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* リセットボタンのスタイル */
+.reset-button {
+    background-color: var(--accent-color); /* 差し色を変数に変更 */
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+/* ヘッダー */
+h1,h2 {
+    text-align: center;
+    color: var(--accent-color); /* 差し色を変数に変更 */
+    border-bottom: 2px solid var(--accent-color); /* 差し色を変数に変更 */
+    padding: 20px 0;
+}
+
+/* テーブルのスタイル */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: var(--accent-color); /* 差し色を変数に変更 */
+    color: #1c1c1c; 
+
+}
+
+select{
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+
+/* ボタン */
+button {
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    color: #e0e0e0;
+    border: 2px solid var(--accent-color);
+}
+
+button:hover,.inline-form button:hover,.submit-button:hover {
+    background-color: var(--accent-color);/* 差し色を変数に変更 */
+    border-color: var(--accent-color);/* 差し色を変数に変更 */
+    box-shadow: 0 0 8px var(--accent-color);/* 差し色を変数に変更 */
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* ボタン右揃え用 */
+.action-buttons {
+    text-align: center;
+    white-space: nowrap; /* 折り返しを防止 */
+}
+
+.inline-form {
+    display: inline-block; /* フォームを横並びに */
+    margin: 0 5px; /* ボタン間に余白を追加 */
+}
+
+.inline-form button {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    color: #e0e0e0;
+    cursor: pointer;
+}
+
+.inline-form input[type="checkbox"] {
+    margin-right: 5px; /* チェックボックスとボタンの間に余白を追加 */
+}
+
+/* フォーム */
+form{
+    text-align: center;
+}
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 水平方向中央揃え */
+    justify-content: center; /* 垂直方向中央揃え */
+    margin: 0;
+}
+.task-form {
+    max-width: 400px;
+    margin: 20px auto; /* 中央揃え */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column; /* ラベルと入力を縦並びに */
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--accent-color); /* 差し色を変数に変更 */
+}
+
+.form-group input {
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--accent-color); /* 差し色を変数に変更 */
+    box-shadow: 0 0 5px var(--accent-color); /* 差し色を変数に変更 */
+}
+
+
+
+/* 日付選択ツールのアイコン */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: var(--accent-color); /* 差し色を変数に変更 */
+    border-radius: 50%; /* 丸みを追加 */
+    padding: 5px;
+    cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    background-color: var(--accent-color); /* 差し色を変数に変更 */
+}
+
+/* 入力フィールド */
+input[type="text"], input[type="number"], input[type="date"], select {
+    padding: 10px;
+    font-size: 1rem;
+    margin: 5px;
+    border-radius: 5px;
+    width: 300px;
+    border: 2px solid var(--accent-color);
+    transition: all 0.3s ease-in-out;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus {
+    outline: none;
+    border-color: var(--accent-color); /* 差し色を変数に変更 */
+}
+
+input[type="text"]:hover,input[type="number"]:hover,input[type="date"]:hover {
+    border-color: var(--accent-color); /* 差し色を変数に変更 */
+    box-shadow: 0 0 8px var(--accent-color);
+}
+
+/* モーダルのスタイル */
+.modal {
+    display: none; /* 初期状態では非表示 */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #1c1c1c;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #3c3c3c;
+    width: 50%;
+    color: #e0e0e0;
+    border-radius: 10px;
+}
+
+.close {
+    color: var(--accent-color); /* 差し色を変数に変更 */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: var(--accent-color); /* 差し色を変数に変更 */
+}
+/* 共通スタイル：ホバー時に枠を光らせる */
+.glow-hover {
+    border: 2px solid var(--accent-color); /* 差し色を変数に変更 */
+    transition: all 0.3s ease-in-out; /* なめらかなエフェクト */
+}
+
+.glow-hover:hover {
+    border-color: var(--accent-color); /* 差し色を変数に変更 */
+    box-shadow: 0 0 8px var(--accent-color); /* 差し色を変数に変更 */
+}
+
